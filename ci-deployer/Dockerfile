@@ -44,4 +44,4 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 # Install Composer
 RUN php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --version=${COMPOSER_VERSION} && rm -rf /tmp/composer-setup.php
 
-RUN composer global require deployer/deployer deployer/recipes wp-cli/wp-cli
+RUN composer global require deployer/deployer deployer/recipes wp-cli/wp-cli codeception/codeception:2.2.4 lucatume/wp-browser:dev-master
