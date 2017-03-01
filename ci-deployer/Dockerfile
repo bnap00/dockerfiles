@@ -26,6 +26,8 @@ RUN apt-get update && \
     git \
     subversion \
     unzip \
+    php5-mcrypt \
+    python-pip \
     wget \
   && rm -r /var/lib/apt/lists/*
 
