@@ -49,4 +49,5 @@ RUN php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filenam
 RUN composer global require deployer/deployer deployer/recipes codeception/codeception lucatume/wp-browser
 
 #install python aws cli for elastic beanstalk
+RUN pip install --upgrade pip
 RUN pip install awsebcli
