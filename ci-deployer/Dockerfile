@@ -21,6 +21,8 @@ RUN apt-get update && \
     libbz2-dev \
     libxslt-dev \
     php-pear \
+    php5-mcrypt \
+    python-pip \
     curl \
     git \
     subversion \
