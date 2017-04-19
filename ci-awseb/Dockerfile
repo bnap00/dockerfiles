@@ -44,9 +44,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
   && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }"
 
 # Start MYSQL Service and set root password as root
-RUN service mysql start
-RUN mysql -e "create database wp"
-RUN mysqladmin -u root password root
+RUN service mysql start && mysql -e "create database wp" && mysqladmin -u root password root
 
 # Install Composer
 RUN php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --version=${COMPOSER_VERSION} && rm -rf /tmp/composer-setup.php
