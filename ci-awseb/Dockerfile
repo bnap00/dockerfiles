@@ -45,6 +45,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 
 # Start MYSQL Service and set root password as root
 RUN service mysql start
+RUN mysql -e "create database wp"
 RUN mysqladmin -u root password root
 
 # Install Composer
