@@ -30,6 +30,11 @@ RUN apt-get update && \
     wget \
     zip \
     mariadb-server \
+    dbus fonts-droid ghostscript groff-base gsfonts libavahi-client3 \
+    libavahi-common-data libavahi-common3 libcap-ng0 libcups2 \
+    libcupsfilters1 libcupsimage2 libdbus-1-3 libgs9 \
+    libgs9-common libijs-0.35 libjbig2dec0 libnetpbm10 \
+    libpaper-utils libpaper1 libxaw7 libxmu6 netpbm poppler-data psutils \
   && rm -r /var/lib/apt/lists/*
 
 # PHP Extensions
@@ -53,4 +58,5 @@ RUN composer global require deployer/deployer deployer/recipes wp-cli/wp-cli
 
 #install python aws cli for elastic beanstalk
 RUN pip install --upgrade pip
-RUN pip install awsebcli
+RUN pip install awsebcli 
+RUN pip install awscli
