@@ -24,6 +24,7 @@ RUN apt-get update && \
     curl \
     git \
     subversion \
+    zip \
     unzip \
     wget \
   && rm -r /var/lib/apt/lists/*
