@@ -12,8 +12,19 @@ ENV COMPOSER_HOME /composer
 ENV COMPOSER_VERSION 1.3.1
 
 # Packages
-RUN apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y \
+
+RUN export GNUPGHOME="$(mktemp -d)" \
+    && gpg --keyserver "hkp://pgp.mit.edu" --recv-keys '3050AC3CD2AE6F03' \
+    && gpg -a --export --armor '3050AC3CD2AE6F03' | apt-key add - \
+    && rm -r "$GNUPGHOME"
+    
+    
+RUN echo "deb http://download.opensuse.org/repositories/home:/rtCamp:/EasyEngine/Debian_8.0/ /" >> /etc/apt/sources.list \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get \
+      -o Dpkg::Options::="--force-confmiss" \
+      -o Dpkg::Options::="--force-confold" \
+      -y install nginx-custom nginx-ee \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
